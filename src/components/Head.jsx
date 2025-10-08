@@ -8,7 +8,7 @@ function Head() {
   return (
     <div className="grid grid-cols-12 items-center shadow-md py-2 px-6 ">
       {/* Left Section */}
-      <div className="flex items-center gap-4 col-span-2">
+      <div className="flex items-center gap-4 col-span-2 ml-2">
         <RxHamburgerMenu className="cursor-pointer" size={22} />
         <img
           className="h-16 cursor-pointer"

@@ -3,7 +3,7 @@ import ButtonList from "./ButtonList";
 
 function MainContainer() {
   return (
-    <div>
+    <div className="overflow-hidden">
       <ButtonList />
       <VideoContainer />
     </div>
