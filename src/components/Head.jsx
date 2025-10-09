@@ -2,6 +2,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { CiSearch } from "react-icons/ci";
 import { GoBell } from "react-icons/go";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Head() {
   const [isFocused, setIsFocused] = useState(false);
@@ -10,11 +11,13 @@ function Head() {
       {/* Left Section */}
       <div className="flex items-center gap-4 col-span-2 ml-2">
         <RxHamburgerMenu className="cursor-pointer" size={22} />
-        <img
-          className="h-16 cursor-pointer"
-          alt="youtube-logo"
-          src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg"
-        />
+        <Link to={"/"}>
+          <img
+            className="h-16 cursor-pointer"
+            alt="youtube-logo"
+            src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg"
+          />
+        </Link>
       </div>
 
       {/* Middle Section (Search Bar) */}

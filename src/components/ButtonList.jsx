@@ -18,7 +18,7 @@ function ButtonList() {
   return (
     <div className="relative">
       <IoChevronBackOutline
-        className="absolute top-1/3 left-0  rounded-full p-2 z-10 bg-black/70"
+        className="absolute top-[20px]  left-0 font-semibold cursor-pointer text-xl bg-white  rounded-full"
         onClick={() => scroll("left")}
       />
       <div
@@ -50,7 +50,7 @@ function ButtonList() {
         ))}
       </div>
       <IoChevronForwardOutline
-        className="absolute right-0 top-1/3"
+        className="absolute right-0 top-1/3 font-semibold cursor-pointer text-xl bg-white  rounded-full"
         onClick={() => scroll("right")}
       />
     </div>
