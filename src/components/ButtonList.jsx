@@ -1,8 +1,10 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
+import { YOUTUBE_CATEGORIES_API } from "../constants/constant";
 
 function ButtonList() {
+  const [categories, setCategories] = useState([]);
   const scrollRef = useRef(null);
 
   function scroll(direction) {
@@ -15,8 +17,21 @@ function ButtonList() {
     }
   }
 
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  async function fetchCategories() {
+    const response = await fetch(YOUTUBE_CATEGORIES_API("US"));
+    const data = await response.json();
+    const categoryNames = data.items
+      .filter((item) => item.snippet.assignable)
+      .map((item) => item.snippet.title);
+    setCategories(["All", ...categoryNames]);
+  }
+
   return (
-    <div className="relative">
+    <div className="relative bg-white py-1 ">
       <IoChevronBackOutline
         className="absolute top-[20px]  left-0 font-semibold cursor-pointer text-xl bg-white  rounded-full"
         onClick={() => scroll("left")}
@@ -25,27 +40,7 @@ function ButtonList() {
         className="flex overflow-x-auto scrollbar-hide scroll-smooth whitespace-nowrap gap-3 pt-2 pl-2"
         ref={scrollRef}
       >
-        {[
-          "All",
-          "Music",
-          "Javascript",
-          "Weight",
-          "Mixes",
-          "Wickets",
-          "Nodes.js",
-          "Gaming",
-          "Podcasts",
-          "React",
-          "Live",
-          "Coding",
-          "News",
-          "Trending",
-          "Interviews",
-          "Design",
-          "AI",
-          "Frontend",
-          "Backend",
-        ].map((text, i) => (
+        {categories.map((text, i) => (
           <Button key={i} buttonText={text} />
         ))}
       </div>

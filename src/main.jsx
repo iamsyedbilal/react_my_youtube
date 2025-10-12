@@ -5,6 +5,8 @@ import App from "./App.jsx";
 import Body from "./components/Body.jsx";
 import WatchPage from "./components/WatchPage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { store } from "./store/store.js";
+import { Provider } from "react-redux";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>
 );
