@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_VIDEO_DETAILS_API } from "../constants/constant";
 import { AiOutlineEye, AiFillLike, AiOutlineCalendar } from "react-icons/ai";
 import CommentsContainer from "./CommentsContainer";
+import LiveChat from "./LiveChat";
 
 function WatchPage() {
   const [videoData, setVideoData] = useState(null);
@@ -96,12 +97,9 @@ function WatchPage() {
           </div>
         </div>
 
-        {/* 👉 Right side (future): Up next */}
-        <div className="md:w-[350px]">
-          <h2 className="font-semibold text-gray-800 mb-3">Up next</h2>
-          <p className="text-gray-500 text-sm">
-            Suggested videos coming soon...
-          </p>
+        {/* 👉 Right side : Chat */}
+        <div className="md:w-[350px] ">
+          <LiveChat />
         </div>
       </div>
       <CommentsContainer />
