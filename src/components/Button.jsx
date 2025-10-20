@@ -1,6 +1,13 @@
-function Button({ buttonText }) {
+function Button({ buttonText, isActive, onClick }) {
   return (
-    <button className=" bg-[#F2F2F2] px-3 py-2 rounded-lg font-medium whitespace-nowrap hover:bg-gray-300 transition">
+    <button
+      onClick={onClick}
+      className={`px-3 py-2 rounded-lg font-medium whitespace-nowrap transition ${
+        isActive
+          ? "bg-black text-white"
+          : "bg-[#F2F2F2] hover:bg-gray-300 text-gray-800"
+      }`}
+    >
       {buttonText}
     </button>
   );

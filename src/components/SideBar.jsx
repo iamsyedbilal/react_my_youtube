@@ -12,12 +12,12 @@ function SideBar() {
   ];
 
   return (
-    <div className="bg-black fixed min-h-screen  z-40 text-white w-20">
+    <div className="bg-white fixed min-h-screen  z-40 text-black w-20">
       <div className="flex flex-col w-full  pt-1 text-center items-center justify-center">
         {iconsArray.map((item) => (
           <div
             key={item.id}
-            className="hover:bg-[#303030] px-5 py-4 rounded-lg transition-colors duration-200 cursor-pointer"
+            className="hover:bg-[#303030] hover:text-white px-5 py-4 rounded-lg transition-colors duration-200 cursor-pointer"
           >
             <div className="text-[26px] font-light">{item.icon}</div>
             <div className="text-[10px] w-full pt-1">{item.name}</div>

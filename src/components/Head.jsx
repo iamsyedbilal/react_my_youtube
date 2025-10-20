@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 import { YOUTUBE_SEARCH_API } from "../constants/constant";
 import { useSelector, useDispatch } from "react-redux";
 import { cachedResults } from "../features/searchSlice/searchSlice";
+import { useNavigate } from "react-router-dom";
 
 function Head() {
   const [isFocused, setIsFocused] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestion, setSuggestion] = useState([]);
   const searchCache = useSelector((store) => store.search);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -40,6 +42,12 @@ function Head() {
     );
   }
 
+  function handleSearch(e) {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+    navigate(`/result?q=${searchQuery}`);
+  }
+
   return (
     <div className="sticky top-0 bg-white z-50 grid grid-cols-12 items-center shadow-md py-2 px-6 ">
       {/* Left Section */}
@@ -56,8 +64,8 @@ function Head() {
 
       {/* Middle Section (Search Bar) */}
       <div className="flex justify-center items-center col-span-8">
-        <div className="flex w-2/3 max-w-xl relative">
-          {/* Search Input */}
+        {/* Search Input */}
+        <form onSubmit={handleSearch} className="flex w-2/3 max-w-xl relative">
           <input
             type="text"
             placeholder="Search"
@@ -95,7 +103,7 @@ function Head() {
               </div>
             </div>
           )}
-        </div>
+        </form>
       </div>
 
       {/* Right Section */}

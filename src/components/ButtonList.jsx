@@ -3,8 +3,9 @@ import Button from "./Button";
 import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { YOUTUBE_CATEGORIES_API } from "../constants/constant";
 
-function ButtonList() {
+function ButtonList({ onCategorySelect }) {
   const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(0);
   const scrollRef = useRef(null);
 
   function scroll(direction) {
@@ -26,8 +27,13 @@ function ButtonList() {
     const data = await response.json();
     const categoryNames = data.items
       .filter((item) => item.snippet.assignable)
-      .map((item) => item.snippet.title);
-    setCategories(["All", ...categoryNames]);
+      .map((item) => ({ id: item.id, title: item.snippet.title }));
+    setCategories([{ id: 0, title: "All" }, ...categoryNames]);
+  }
+
+  function handleCategoryClick(cat) {
+    setActiveCategory(cat.id);
+    onCategorySelect(cat.id);
   }
 
   return (
@@ -40,8 +46,13 @@ function ButtonList() {
         className="flex overflow-x-auto scrollbar-hide scroll-smooth whitespace-nowrap gap-3 pt-2 pl-2"
         ref={scrollRef}
       >
-        {categories.map((text, i) => (
-          <Button key={i} buttonText={text} />
+        {categories.map((cat) => (
+          <Button
+            key={cat.id}
+            buttonText={cat.title}
+            isActive={cat.id === activeCategory}
+            onClick={() => handleCategoryClick(cat)}
+          />
         ))}
       </div>
       <IoChevronForwardOutline

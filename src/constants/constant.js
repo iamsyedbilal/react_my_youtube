@@ -12,3 +12,9 @@ export const YOUTUBE_SEARCH_API = (query) =>
 
 export const YOUTUBE_CATEGORIES_API = (regionCode = "US") =>
   `https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=${regionCode}&key=${GOOGLE_API_KEY}`;
+
+export const YOUTUBE_SEARCH_RESULTS_API = (query) =>
+  `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=video&q=${query}&key=${GOOGLE_API_KEY}`;
+
+export const YOUTUBE_CATEGORY_VIDEOS_API = (categoryId, regionCode = "US") =>
+  `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=50&regionCode=${regionCode}&videoCategoryId=${categoryId}&key=${GOOGLE_API_KEY}`;
