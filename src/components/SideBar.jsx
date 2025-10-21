@@ -12,7 +12,7 @@ function SideBar() {
   ];
 
   return (
-    <div className="bg-white fixed min-h-screen  z-40 text-black w-20">
+    <div className="bg-white dark:bg-black text-black dark:text-white fixed min-h-screen  z-40  w-20">
       <div className="flex flex-col w-full  pt-1 text-center items-center justify-center">
         {iconsArray.map((item) => (
           <div

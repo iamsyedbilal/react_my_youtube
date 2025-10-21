@@ -26,7 +26,9 @@ function WatchPage() {
 
   if (!videoData) {
     return (
-      <div className="text-center py-10 text-gray-600">Loading video...</div>
+      <div className="text-center py-10 text-gray-600 dark:text-gray-300">
+        Loading video...
+      </div>
     );
   }
 
@@ -35,10 +37,10 @@ function WatchPage() {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row gap-8 p-6 max-w-7xl mx-auto">
+      <div className="flex flex-col md:flex-row gap-8 p-6 max-w-7xl mx-auto text-gray-900 dark:text-gray-100 transition-colors duration-300">
         {/* 🎥 Left side: video player */}
         <div className="flex-1">
-          <div className="aspect-video w-full rounded-xl overflow-hidden shadow-md">
+          <div className="aspect-video w-full rounded-xl overflow-hidden shadow-lg dark:shadow-gray-700/50">
             <iframe
               className="w-full h-full"
               src={`https://www.youtube.com/embed/${videoId}`}
@@ -48,12 +50,12 @@ function WatchPage() {
           </div>
 
           {/* 🏷️ Title */}
-          <h1 className="text-2xl font-semibold mt-4 text-gray-900">
+          <h1 className="text-2xl font-semibold mt-4 leading-snug">
             {snippet.title}
           </h1>
 
           {/* 📊 Stats bar */}
-          <div className="flex flex-wrap justify-between items-center mt-3 text-sm text-gray-600">
+          <div className="flex flex-wrap justify-between items-center mt-3 text-sm text-gray-600 dark:text-gray-400">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1">
                 <AiOutlineEye size={18} />
@@ -68,7 +70,7 @@ function WatchPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 text-blue-600">
+            <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
               <AiFillLike size={20} />
               <span>
                 {Number(statistics.likeCount || 0).toLocaleString()} likes
@@ -77,32 +79,38 @@ function WatchPage() {
           </div>
 
           {/* 👤 Channel Info */}
-          <div className="flex items-center gap-3 mt-6 border-t border-gray-200 pt-4">
-            <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center font-semibold uppercase text-gray-700">
+          <div className="flex items-center gap-3 mt-6 border-t border-gray-200 dark:border-gray-700 pt-4">
+            <div className="w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center justify-center font-semibold uppercase text-gray-800 dark:text-gray-100">
               {snippet.channelTitle[0]}
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 ">
+              <h3 className="font-semibold text-gray-900 dark:text-gray-100">
                 {snippet.channelTitle}
               </h3>
-              <p className="text-gray-500 text-sm">Subscribers hidden</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                Subscribers hidden
+              </p>
             </div>
           </div>
 
           {/* 📝 Description */}
-          <div className="bg-gray-100 rounded-xl p-4 mt-6">
-            <p className="whitespace-pre-line text-gray-700 text-sm leading-relaxed">
+          <div className="bg-gray-100 dark:bg-gray-800/70 rounded-xl p-4 mt-6 border border-gray-200 dark:border-gray-700">
+            <p className="whitespace-pre-line text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
               {snippet.description}
             </p>
           </div>
         </div>
 
-        {/* 👉 Right side : Chat */}
-        <div className="md:w-[350px] ">
+        {/* 👉 Right side : Live Chat */}
+        <div className="md:w-[380px]">
           <LiveChat />
         </div>
       </div>
-      <CommentsContainer />
+
+      {/* 💬 Comments */}
+      <div className="max-w-7xl mx-auto px-6 pb-12">
+        <CommentsContainer />
+      </div>
     </>
   );
 }

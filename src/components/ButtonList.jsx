@@ -37,9 +37,9 @@ function ButtonList({ onCategorySelect }) {
   }
 
   return (
-    <div className="relative bg-white py-1 ">
+    <div className="relative bg-white dark:bg-black text-black dark:text-white py-1 ">
       <IoChevronBackOutline
-        className="absolute top-[20px]  left-0 font-semibold cursor-pointer text-xl bg-white  rounded-full"
+        className="absolute top-[20px]  left-0 font-semibold cursor-pointer text-xl text-black dark:text-white bg-white dark:bg-gray-800 rounded-full"
         onClick={() => scroll("left")}
       />
       <div
@@ -56,7 +56,7 @@ function ButtonList({ onCategorySelect }) {
         ))}
       </div>
       <IoChevronForwardOutline
-        className="absolute right-0 top-1/3 font-semibold cursor-pointer text-xl bg-white  rounded-full"
+        className="absolute right-0 top-1/3 font-semibold cursor-pointer text-xl text-black dark:text-white bg-white dark:bg-gray-800  rounded-full"
         onClick={() => scroll("right")}
       />
     </div>

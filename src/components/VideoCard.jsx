@@ -5,11 +5,14 @@ function VideoCard({ info }) {
     snippet: { title, channelTitle, thumbnails, publishedAt },
   } = info;
 
-  // Optional channel image (if your API includes it)
   const channelImg = info.channelThumbnail?.url || null;
 
   return (
-    <div className=" bg-white  shadow-md hover:shadow-xl transition-shadow rounded-2xl overflow-hidden w-80 m-4 cursor-pointer">
+    <div
+      className="bg-white dark:bg-gray-800 shadow-md hover:shadow-xl 
+                 transition-all duration-300 rounded-2xl overflow-hidden 
+                 w-80 m-4 cursor-pointer transform hover:-translate-y-1"
+    >
       {/* Thumbnail */}
       <img
         src={thumbnails?.high?.url}
@@ -17,8 +20,9 @@ function VideoCard({ info }) {
         className="w-full h-48 object-cover"
       />
 
+      {/* Video Details */}
       <div className="flex p-4 gap-3">
-        {/* Channel Image (optional) */}
+        {/* Channel Image or Initial */}
         {channelImg ? (
           <img
             src={channelImg}
@@ -27,23 +31,29 @@ function VideoCard({ info }) {
           />
         ) : (
           <div
-            className="text-center text-gray-700 font-extrabold text-3xl uppercase rounded-full 
-              font-serif"
+            className="w-10 h-10 flex items-center justify-center 
+                       bg-gray-300 dark:bg-gray-700 text-gray-700 
+                       dark:text-gray-200 font-bold text-lg rounded-full"
           >
             {channelTitle ? channelTitle[0] : "?"}
           </div>
         )}
 
         {/* Video Info */}
-        <div className="flex flex-col">
-          <h2 className="text-base font-semibold text-gray-900  line-clamp-2">
+        <div className="flex flex-col flex-1">
+          <h2
+            className="text-base font-semibold text-gray-900 dark:text-gray-100 
+                       line-clamp-2 leading-snug"
+          >
             {title}
           </h2>
-          <div className="flex justify-between pt-2">
-            <strong className="text-sm text-gray-500">{channelTitle}</strong>
-            <div className="flex items-center gap-2 text-xs text-gray-400 mt-1">
-              <span>{new Date(publishedAt).toLocaleDateString()}</span>
-            </div>
+          <div className="flex justify-between items-center pt-2 text-sm">
+            <span className="text-gray-600 dark:text-gray-400">
+              {channelTitle}
+            </span>
+            <span className="text-gray-400 dark:text-gray-500 text-xs">
+              {new Date(publishedAt).toLocaleDateString()}
+            </span>
           </div>
         </div>
       </div>

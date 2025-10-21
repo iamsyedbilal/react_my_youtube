@@ -46,7 +46,7 @@ function LiveChat() {
   };
 
   return (
-    <div className="bg-white h-[400px] shadow-md border rounded-lg w-full max-w-md flex flex-col">
+    <div className="bg-white h-[400px] shadow-md border rounded-xl w-full max-w-md flex flex-col">
       <div className="p-2 bg-gray-100 font-semibold border-b text-gray-700 text-sm">
         Live Chat
       </div>
@@ -67,7 +67,7 @@ function LiveChat() {
         <input
           type="text"
           placeholder="Type your message..."
-          className="flex-1 px-3 py-2 border rounded-full text-sm outline-none focus:ring-2 focus:ring-blue-400"
+          className="flex-1 text-black px-3 py-2 border rounded-full text-sm outline-none focus:ring-2 focus:ring-blue-400"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
         />
